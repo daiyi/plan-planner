@@ -5,3 +5,4 @@ Here we use:
 + Ruby 2.2.1
 + Rails 4.2.0
 + ImageMagick 6.7.7
++ [Paperclip](https://github.com/thoughtbot/paperclip) 2.4.5 
