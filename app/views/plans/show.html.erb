@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @plan.title %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= link_to image_tag(@plan.image.url(:tile)), @plan.image.url %>
+</p>
+
+<p>
+  <strong>Timestamp:</strong>
+  <%= @plan.timestamp %>
+</p>
+
+<%= link_to 'Edit', edit_plan_path(@plan) %> |
+<%= link_to 'Back', plans_path %>
