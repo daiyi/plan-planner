@@ -19,7 +19,8 @@
     <%= f.label :image %><br>
     <%= f.file_field :image %>
   </div>
-  <div class="field">
+  <!-- TODO have controller enter timestamp and remove this -->
+  <div class="field" style="display:none">
     <%= f.label :timestamp %><br>
     <%= f.datetime_select :timestamp %>
   </div>
