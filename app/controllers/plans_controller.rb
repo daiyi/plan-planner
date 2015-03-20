@@ -5,6 +5,8 @@ class PlansController < ApplicationController
   # GET /plans.json
   def index
     @plans = Plan.all
+    # person for modal
+    @plan = Plan.new
   end
 
   # GET /plans/1
