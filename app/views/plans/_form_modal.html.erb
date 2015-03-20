@@ -1,5 +1,24 @@
-<% remote = true %>
-<%= bootstrap_form_for @plan, html: { multipart: true } do |f| %>
-  <%= f.text_field :title, placeholder: 'Example: San Francisco Trip' %>
-  <%= f.file_field :image %>
+<%= bootstrap_form_for @plan, remote: true, html: { multipart: true } do |f| %>
+  <div class="modal-body">
+
+    <% if @plan.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@plan.errors.count, "error") %> prohibited this plan from being saved:</h2>
+
+        <ul>
+  	  <% @plan.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+	  <% end %>
+	</ul>
+      </div>
+    <% end %>
+
+    <form id="new-plan">
+      <%= f.text_field :title, placeholder: 'Example: San Francisco Trip' %>
+      <%= f.file_field :image %>
+    </form>
+  </div>
+  <div class="modal-footer actions">
+    <%= f.submit 'Create', class: 'btn btn-primary' %>
+  </div>
 <% end %>

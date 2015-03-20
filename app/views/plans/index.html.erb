@@ -19,18 +19,18 @@
       
         <div class="row">
           <% @plans.each do |plan| %>
-            <div class="col-md-4">
-              <div class="grid-title">
-		<%= plan.title %>
-	      </div>
-	      <div class="grid-image">
-		<%= image_tag plan.image.url(:tile) %>
-	      </div>
-              <p><%= plan.timestamp %></p>
-              <p><%= link_to 'Show', plan %> | 
-                 <%= link_to 'Edit', edit_plan_path(plan) %> |
-                 <%= link_to 'Destroy', plan, method: :delete, data: { confirm: 'Are you sure?' } %></p>
-            </div>
+	    <%= link_to(plan) do %>
+              <div class="col-md-4 grid-tile-wrap">
+                <div class="grid-title">
+		  <%= plan.title %>
+      		</div>
+		<div class="grid-image">
+		  <%= image_tag plan.image.url(:tile) %>
+		</div>
+<!--          <p><%= plan.timestamp %></p>
+              <p><%= link_to 'Destroy', plan, method: :delete, data: { confirm: 'Are you sure?' } %></p> -->
+              </div>
+	    <% end %>
           <% end %>   
         </div>
         
@@ -53,15 +53,7 @@
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
               <h4 class="modal-title" id="addTripPlanLabel">New Trip Plan</h4>
 	    </div>
-	    <div class="modal-body">
-              <form>
-		<%= render 'form_modal' %>
-              </form>
-	    </div>
-	    <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-              <button type="button" class="btn btn-primary">Create</button>
-	    </div>
+	    <%= render 'form_modal' %>
 	  </div>
 	</div>
       </div>
@@ -69,3 +61,4 @@
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>     
+	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>

@@ -1,19 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @plan.title %>
-</p>
+<div class="container-fluid" align="center">
+  <h3><%= @plan.title %></h3>
 
-<p>
-  <strong>Image:</strong>
   <%= image_tag @plan.image.url(:tile) %>
-</p>
 
-<p>
-  <strong>Timestamp:</strong>
-  <%= @plan.timestamp %>
-</p>
+  <p>You're looking at a plan that you're going to plan</p>
 
 <%= link_to 'Edit', edit_plan_path(@plan) %> |
 <%= link_to 'Back', plans_path %>
+</div>
