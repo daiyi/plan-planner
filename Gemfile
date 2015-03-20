@@ -26,8 +26,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # image in models, needs imagemagick
 gem 'paperclip'
 # Bootstrap
-gem 'bootstrap-sass', '= 3.3.4'
+gem 'bootstrap-sass', '~> 3.3.4'
 gem 'autoprefixer-rails'
+gem 'bootstrap_form'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
