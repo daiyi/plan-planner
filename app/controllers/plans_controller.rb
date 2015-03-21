@@ -1,10 +1,12 @@
+require 'time'
+
 class PlansController < ApplicationController
   before_action :set_plan, only: [:show, :edit, :update, :destroy]
 
   # GET /plans
   # GET /plans.json
   def index
-    @plans = Plan.all
+    @plans = Plan.order('timestamp DESC')
     # plan for modal
     @plan = Plan.new
   end
@@ -27,10 +29,10 @@ class PlansController < ApplicationController
   # POST /plans.json
   def create
     @plan = Plan.new(plan_params)
-
+    @plan.timestamp = Time.now.to_i
     respond_to do |format|
       if @plan.save
-        format.html { redirect_to @plan, notice: 'Plan was successfully created.' }
+        format.html { redirect_to plans_url, notice: Time.now.to_i}
         format.json { render :show, status: :created, location: @plan }
         format.js   { render action: 'show', status: :created, location: @plan }
       else
@@ -47,7 +49,7 @@ class PlansController < ApplicationController
   def update
     respond_to do |format|
       if @plan.update(plan_params)
-        format.html { redirect_to @plan, notice: 'Plan was successfully updated.' }
+        format.html { redirect_to @plan }
         format.json { render :show, status: :ok, location: @plan }
       else
         format.html { render :edit }
@@ -61,7 +63,7 @@ class PlansController < ApplicationController
   def destroy
     @plan.destroy
     respond_to do |format|
-      format.html { redirect_to plans_url, notice: 'Plan was successfully destroyed.' }
+      format.html { redirect_to plans_url }
       format.json { head :no_content }
     end
   end
