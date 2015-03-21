@@ -6,7 +6,7 @@ class PlansController < ApplicationController
   # GET /plans
   # GET /plans.json
   def index
-    @plans = Plan.order('timestamp DESC')
+    @plans = Plan.order('time_touched DESC')
     # plan for modal
     @plan = Plan.new
   end
@@ -29,10 +29,10 @@ class PlansController < ApplicationController
   # POST /plans.json
   def create
     @plan = Plan.new(plan_params)
-    @plan.timestamp = Time.now.to_i
+    @plan.time_touched = Time.now.to_i
     respond_to do |format|
       if @plan.save
-        format.html { redirect_to plans_url, notice: Time.now.to_i}
+        format.html { redirect_to plans_url}
         format.json { render :show, status: :created, location: @plan }
         format.js   { render action: 'show', status: :created, location: @plan }
       else
@@ -48,6 +48,7 @@ class PlansController < ApplicationController
   # PATCH/PUT /plans/1.json
   def update
     respond_to do |format|
+    @plan.time_touched = Time.now.to_i
       if @plan.update(plan_params)
         format.html { redirect_to @plan }
         format.json { render :show, status: :ok, location: @plan }
