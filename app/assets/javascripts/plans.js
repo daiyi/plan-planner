@@ -13,15 +13,16 @@ $(document).ready(function(){
 (function($) {
 
     $.fn.modal_success = function(){
+	alert('nice!');
     // close modal
-	this.modal('hide');
+    //	this.modal('hide');
 
     // clear form input elements
     // todo/note: handle textarea, select, etc
-	this.find('form input[type="text"]').val('');
+    //	this.find('form input[type="text"]').val('');
 
     // clear error state
-	this.clear_previous_errors();
+    //	this.clear_previous_errors();
     };
 
     $.fn.render_form_errors = function(errors){
