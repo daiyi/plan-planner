@@ -1,4 +1,4 @@
-<%= bootstrap_form_for @plan, remote: true, html: { multipart: true } do |f| %>
+<%= bootstrap_form_for @plan, remote: true, html: { multipart: true, 'data-model': 'plan' }, :authenticity_token => true do |f| %>
   <div class="modal-body">
 
     <% if @plan.errors.any? %>
@@ -13,12 +13,13 @@
       </div>
     <% end %>
 
-    <form id="new-plan">
-      <%= f.text_field :title, placeholder: 'Example: San Francisco Trip' %>
-      <%= f.file_field :image %>
-    </form>
+
+    <%= f.text_field :title, placeholder: 'Example: San Francisco Trip' %>
+    <%= f.file_field :image %>
+
   </div>
   <div class="modal-footer actions">
     <%= f.submit 'Create', class: 'btn btn-primary' %>
   </div>
+
 <% end %>

@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
     console.log("js loaded");
-    $(document).bind('ajaxError', 'form#new-plan', function(event, jqxhr, settings, exception){
+    $(document).bind('ajaxError', 'form#new_plan', function(event, jqxhr, settings, exception){
 
     // note: jqxhr.responseJSON undefined, parsing responseText instead
 	$(event.data).render_form_errors( $.parseJSON(jqxhr.responseText) );
